@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'board',
-    'chatbot',
     'api',
     'rest_framework',
     'user',
@@ -88,9 +87,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jarvis',
-        'USER': 'root',
-        'PASSWORD':'root',
-        'HOST':'127.0.0.1',
+        'USER': 'admin',
+        'PASSWORD':'roomate1245',
+        'HOST':'jarvis-mariadb.c9fewr77bnv8.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306'
     }
 }
