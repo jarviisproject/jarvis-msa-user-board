@@ -1,6 +1,6 @@
 FROM python:3.8
 
-RUN pip install django
+RUN pip install -r requirements.txt
 
 WORKDIR /Users/bitcamp/___/djangnlp/backend2
 
