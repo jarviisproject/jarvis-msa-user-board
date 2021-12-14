@@ -21,6 +21,7 @@ def users(request):
             new_user = request.data
             serializer = UserSerializer(data=new_user)
             if serializer.is_valid():
+                print(serializer)
                 serializer.save()
                 return JsonResponse({'join': 'SUCCESS'})
             return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
