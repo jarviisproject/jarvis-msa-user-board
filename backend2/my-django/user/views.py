@@ -72,12 +72,13 @@ def user(request):
 
 
 @api_view(['GET'])
-def exist(request):
+def exist(request, email):
     try:
-        joinuseremail = request.data
-        existck = User.objects.all().filter(user_email=joinuseremail['user_email']).values()[0]
-        if joinuseremail['user_email'] == existck['user_email']:
-            return JsonResponse({'exist': '해당 이메일은 있습니다'})
+        if email is not None:
+            joinuseremail = request.data
+            existck = User.objects.all().filter(user_email=joinuseremail['user_email']).values()[0]
+            if joinuseremail['user_email'] == existck['user_email']:
+                return JsonResponse({'exist': '해당 이메일은 있습니다'})
     except:
         return JsonResponse({'exist':'사용 가능합니다.'})
 
