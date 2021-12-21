@@ -13,11 +13,3 @@ services:
       - .:/my-django
     expose:
       - "8000"
-
-  nginx:
-    image: nginx
-    container_name: j_nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - jarvis

@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 RUN apt-get update
 RUN apt-get install -y net-tools
 RUN apt-get install -y dnsutils
-RUN pip3 install gunicorn==20.0.2
+
 
 # Install Dependencies of Miniconda
 RUN apt-get update --fix-missing && \

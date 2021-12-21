@@ -53,7 +53,9 @@ def users(request):
 def login(request):
     try:
         loginuser = request.data
-        dbUser = User.objects.get(user_email=loginuser['user_email'])
+        print('************** data 확인 ************')
+        print(loginuser)
+        dbUser = User.objects.get(user_email=loginuser['email'])
         if loginuser['password'] == dbUser.password:
             userSerializer = UserSerializer(dbUser, many=False)
             return JsonResponse(data=userSerializer.data, safe=False,)
