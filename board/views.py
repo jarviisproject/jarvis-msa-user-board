@@ -12,7 +12,6 @@ from user.models import User
 @api_view(['GET','POST','PUT', 'DELETE'])
 @parser_classes([JSONParser])
 def board(request):
-    try:
         if request.method == 'POST':
             new = request.data
             u = User()
@@ -31,26 +30,31 @@ def board(request):
             return JsonResponse(data=serializer.data, safe=False)
         elif request.method == 'PUT':
             modifyboard = request.data
-            u = User()
-            user = User.objects.all().filter(id= modifyboard['writen']).values()[0]
-            u.id = user['id']
-            board = Board.objects.get(id=modifyboard['id'])
-            dbboard = Board.objects.all().filter(id=modifyboard['id']).values()[0]
-            dbboard['title'] = modifyboard['title']
-            dbboard['body'] = modifyboard['body']
-            dbboard['writen_id'] = u.id
-            dbboard['comment'] = modifyboard['comment']
-            dbboard['create_at'] = modifyboard['create_at']
-            dbboard['create_at'] = modifyboard['create_at']
-            serializer = BoardSerializer(data=dbboard)
-            serializer.update(board, dbboard)
-            return JsonResponse({'board modify': 'SUCCESS'})
+            try:
+                u = User()
+                user = User.objects.all().filter(id= modifyboard['writen']).values()[0]
+                u.id = user['id']
+                board = Board.objects.get(id=modifyboard['id'])
+                dbboard = Board.objects.all().filter(id=modifyboard['id']).values()[0]
+                dbboard['title'] = modifyboard['title']
+                dbboard['body'] = modifyboard['body']
+                dbboard['writen_id'] = u.id
+                dbboard['comment'] = modifyboard['comment']
+                dbboard['create_at'] = modifyboard['create_at']
+                dbboard['create_at'] = modifyboard['create_at']
+                serializer = BoardSerializer(data=dbboard)
+                serializer.update(board, dbboard)
+                return JsonResponse({'board modify': 'SUCCESS'})
+            except:
+                return JsonResponse({'board modify': 'error'})
         elif request.method == 'DELETE':
-            dbboard = Board.objects.get(id=request.data['id'])
-            dbboard.delete()
-            return JsonResponse({'board delete': 'SUCCESS'})
-    except:
-        return JsonResponse({'board': 'fail'})
+            try:
+                dbboard = Board.objects.get(id=request.data['id'])
+                dbboard.delete()
+                return JsonResponse({'board delete': 'SUCCESS'})
+            except:
+                return JsonResponse({'board delete': 'ERROR'})
+
 
 
 @api_view(['GET'])
