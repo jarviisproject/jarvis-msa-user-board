@@ -12,6 +12,7 @@ class UserSerializer(serializers.Serializer):
     address = serializers.CharField()
     job = serializers.CharField()
     user_interests = serializers.CharField()
+    token = serializers.CharField()
 
     class Meta:
         model = user

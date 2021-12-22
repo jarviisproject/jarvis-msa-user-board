@@ -56,7 +56,6 @@ def board(request):
                 return JsonResponse({'board delete': 'ERROR'})
 
 
-
 @api_view(['GET'])
 def find(request):
     try:

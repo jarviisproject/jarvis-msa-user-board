@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'user',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,6 +94,7 @@ REST_USE_JWT = True
 # }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -101,6 +103,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# CORS 관련 추가
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000','http://localhost:3000']
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'api.urls'
 
