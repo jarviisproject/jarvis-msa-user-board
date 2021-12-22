@@ -1,11 +1,11 @@
 FROM python:3.8
 
-WORKDIR /my-django
+WORKDIR /django_web
 
 COPY . .
 COPY requirements.txt requirements.txt
 
-CMD ["python", "manage.py", "runserver"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt

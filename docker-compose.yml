@@ -3,13 +3,12 @@ version: "3"
 services:
   jarvis:
     image: wkd1598/django-user:v6
-    container_name: j_django
-
-    #    build: .
-    command: python manage.py runserver
+    container_name: janginsung_django_web
+    build: .
+    command: python manage.py runserver 0:8000
     ports:
       - "8000:8000"
     volumes:
-      - .:/my-django
+      - .:/janginsung_django_web
     expose:
       - "8000"
