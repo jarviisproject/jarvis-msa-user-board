@@ -8,6 +8,7 @@ from user.models import User
 from user.serializers import UserSerializer
 
 
+
 @api_view(['GET', 'POST', 'PUT', 'DELETE'])
 @parser_classes([JSONParser])
 def users(request):
